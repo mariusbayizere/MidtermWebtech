@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2024 3:54:49 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Models.Studentcourse" table="studentcourse" catalog="auca">
+        <id name="studentCourseId" type="string">
+            <column name="StudentCourseId" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="course" class="Models.Course" fetch="select">
+            <column name="course_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="studentregistration" class="Models.Studentregistration" fetch="select">
+            <column name="registartionId" not-null="true" />
+        </many-to-one>
+        <property name="result" type="java.lang.Long">
+            <column name="Result" precision="10" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

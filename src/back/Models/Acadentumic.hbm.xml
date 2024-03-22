@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2024 3:54:49 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Models.Acadentunit" table="acadentunit" catalog="auca">
+        <id name="code" type="string">
+            <column name="code" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="acadentunit" class="Models.Acadentunit" fetch="select">
+            <column name="parentcode" length="10" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="250" not-null="true" />
+        </property>
+        <property name="eacademicUnit" type="string">
+            <column name="EAcademicUnit" length="10" not-null="true" />
+        </property>
+        <set name="studentregistrations" table="studentregistration" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Department_code" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Models.Studentregistration" />
+        </set>
+        <set name="courses" table="course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="DepartmentCode" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Models.Course" />
+        </set>
+        <set name="acadentunits" table="acadentunit" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parentcode" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Models.Acadentunit" />
+        </set>
+    </class>
+</hibernate-mapping>

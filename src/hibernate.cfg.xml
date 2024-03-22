@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">auca@2023</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/auca?useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+          <mapping resource="back/Models/Course.hbm.xml"/>
+  <mapping resource="back/Models/Studentregistration.hbm.xml"/>
+  <mapping resource="back/Models/Teacher.hbm.xml"/>
+  <mapping resource="back/Models/Semester.hbm.xml"/>
+  <mapping resource="back/Models/Studentcourse.hbm.xml"/>
+  <mapping resource="back/Models/Acadentunit.hbm.xml"/>
+  <mapping resource="back/Models/Coursedefinition.hbm.xml"/>
+  <mapping resource="back/Models/Student.hbm.xml"/>
+    <mapping resource="back/Models/User.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

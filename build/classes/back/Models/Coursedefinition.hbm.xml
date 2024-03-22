@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2024 3:54:49 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Models.Coursedefinition" table="coursedefinition" catalog="auca">
+        <id name="code" type="string">
+            <column name="code" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="creadit" type="java.lang.Integer">
+            <column name="Creadit" />
+        </property>
+        <set name="courses" table="course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CourseDefinition_code" length="15" not-null="true" />
+            </key>
+            <one-to-many class="Models.Course" />
+        </set>
+    </class>
+</hibernate-mapping>

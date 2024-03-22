@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2024 3:54:49 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Models.Studentregistration" table="studentregistration" catalog="auca">
+        <id name="registartionId" type="java.lang.Integer">
+            <column name="registartionId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="student" class="Models.Student" fetch="select">
+            <column name="StudentId" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="semester" class="Models.Semester" fetch="select">
+            <column name="Semester_id" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="acadentunit" class="Models.Acadentunit" fetch="select">
+            <column name="Department_code" length="10" not-null="true" />
+        </many-to-one>
+        <property name="registrationDate" type="date">
+            <column name="registrationDate" length="10" not-null="true" />
+        </property>
+        <set name="studentcourses" table="studentcourse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="registartionId" not-null="true" />
+            </key>
+            <one-to-many class="Models.Studentcourse" />
+        </set>
+    </class>
+</hibernate-mapping>

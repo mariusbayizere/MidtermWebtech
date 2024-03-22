@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2024 3:54:49 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Models.Student" table="student" catalog="auca">
+        <id name="regNo" type="string">
+            <column name="regNo" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="firstName" length="250" not-null="true" />
+        </property>
+        <property name="dateOfBirth" type="string">
+            <column name="dateOfBirth" length="250" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="250" not-null="true" />
+        </property>
+        <set name="studentregistrations" table="studentregistration" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="StudentId" length="5" not-null="true" />
+            </key>
+            <one-to-many class="Models.Studentregistration" />
+        </set>
+    </class>
+</hibernate-mapping>
